@@ -1,0 +1,13 @@
+name: stats
+dependencies:
+  - pip
+  - pip:
+    - ipdb
+    - fire
+    - fastparquet
+    - mlflow
+    - numpy
+    - pandas
+    - category_encoders
+    - scikit-learn
+    - kaggle

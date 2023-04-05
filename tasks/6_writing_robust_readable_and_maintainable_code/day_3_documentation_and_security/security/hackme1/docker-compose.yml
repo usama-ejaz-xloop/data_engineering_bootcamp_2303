@@ -1,0 +1,15 @@
+version: "3"
+services:
+  app:
+    build: app/
+    ports:
+      - 5000:5000
+    environment:
+      DB_CONNECTION_STRING: "host=db user=test password=test dbname=test"
+    command: "bash -c '/wait-for-it.sh db:5432 -- gunicorn hackme1_main:app -b 0.0.0.0:5000'"
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: test
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test

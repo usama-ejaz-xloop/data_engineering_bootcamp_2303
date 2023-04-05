@@ -1,0 +1,11 @@
+groups:
+- name: host
+  rules:
+  - alert: high_memory
+    expr: node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes > 5000000
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "Using more than 5GB of memory"
+      description: "Host uses more than 5GB of memory ({{ humanize $value }} bytes)."

@@ -1,0 +1,10 @@
+The following aspects need to be improved in the application:
+
+- The logs shouldn’t written to a file, but to the container output.
+- It should be stateless, so that:
+  - it can easily be restarted without loss of data,
+  - it is easy to spawn multiple instances of the application.
+- Requirements installation should be moved from runtime to build time.
+- App should be able to be executed both during development, with debugging enabled, and in production, with debugging disabled.
+- The application should be built in such a way that the database can easily be replaced (development with production instance).
+

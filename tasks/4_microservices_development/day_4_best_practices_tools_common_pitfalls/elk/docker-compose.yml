@@ -1,0 +1,45 @@
+version: '3.7'
+
+services:
+  elasticsearch:
+    image: elasticsearch:8.4.3
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+      xpack.security.enabled: false
+      discovery.type: single-node
+
+  logstash:
+    image: logstash:8.4.3
+    ports:
+      - "5000:5000/udp"
+      - "5000:5000/tcp"
+    environment:
+      LS_JAVA_OPTS: -Xms256m -Xmx256m
+    volumes:
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: kibana:8.4.3
+    ports:
+      - "5601:5601"
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+
+  nginx:
+    image: nginx:1.23.2
+    volumes:
+      - ./website/:/usr/share/nginx/html:ro
+    depends_on:
+      - logstash
+    ports:
+      - 8000:80
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://127.0.0.1:5000"
+        syslog-format: "rfc5424"

@@ -1,0 +1,13 @@
+# For hands-on task and details please see README file the directory above or corresponding presentation.
+
+container 2:
+name it wordpress
+image wordpress:latest
+set environment:
+      - WORDPRESS_DB_HOST=# put here real ip from: "docker exec -it wordpressdb hostname -i"
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=wordpress
+      - WORDPRESS_DB_NAME=wordpress
+wordpress storage is in /var/www/html
+run as a daemon
+expose container port 80 on host

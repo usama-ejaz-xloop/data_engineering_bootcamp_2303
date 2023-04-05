@@ -1,0 +1,12 @@
+name: check-code-style
+on: [push]
+jobs:
+  check-code-style:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - run: pip install pre-commit==2.20.0
+      - run: pre-commit run --all-files

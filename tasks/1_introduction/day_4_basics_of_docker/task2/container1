@@ -1,0 +1,12 @@
+# For hands-on task and details please see README file the directory above or corresponding presentation.
+
+name it wordpressdb
+image mariadb:10.6.4-focal
+set environment:
+      - MYSQL_ROOT_PASSWORD=somewordpress
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=wordpress
+      - MYSQL_PASSWORD=wordpress
+mariadb store data in /var/lib/mysql
+overwrite default command parameter with: '--default-authentication-plugin=mysql_native_password'
+run as a daemon

@@ -1,0 +1,10 @@
+name: stats
+dependencies:
+  - pip
+  - pip:
+    - mlflow
+    - numpy
+    - pandas
+    - scikit-learn
+    - fire
+    - flask

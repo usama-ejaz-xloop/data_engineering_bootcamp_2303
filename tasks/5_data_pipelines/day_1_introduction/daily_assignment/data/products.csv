@@ -1,0 +1,28 @@
+ProductId,Name,Category,UnitPrice
+1,Red Shorts,Shorts,89.75
+2,White Shorts,Shorts,89.27
+3,Blue Shorts,Shorts,118.88
+4,Green Shorts,Shorts,121.43
+5,Black Shorts,Shorts,74.58
+6,Red Sandals,Shoes,138.38
+7,White Sandals,Shoes,160.96
+8,Blue Sneakers,Shoes,111.7
+9,Green Sandals,Shoes,137.53
+10,Black Sneakers,Shoes,146.41
+11,Watch,Accesories,179.65
+12,Bracelet,Accesories,160.77
+13,Earrings,Accesories,185.9
+14,Red t-shirt,T-Shirts,121.58
+15,White t-shirt,T-Shirts,131.13
+16,Blue t-shirt,T-Shirts,140.68
+17,Green t-shirt,T-Shirts,130.13
+18,Black t-shirt,T-Shirts,102.41
+19,Green jacket,Jackets,223.69
+20,Black jacket,Jackets,190.01
+21,Red Chinos,Pants,134.42
+22,White Chinos,Pants,142.9
+23,Green Chinos,Pants,150.93
+24,Blue Jeans,Pants,173.1
+25,Black Jeans,Pants,129.72
+26,Grey Sweatpants,Pants,97.72
+27,Grey Jeans,Pants,199.27
