@@ -1,3 +1,0 @@
-categorical_encoder_type: "target_encoder"
-imputation_strategy: "median"
-model_type: "logistic_regression"
