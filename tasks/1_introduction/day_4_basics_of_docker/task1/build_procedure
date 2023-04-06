@@ -1,0 +1,23 @@
+# For hands-on task and details please see README file the directory above or corresponding presentation.
+
+# Here is a procedure to compile the Hello World app from sources.
+# for more info follow: https://ostechnix.com/how-to-build-debian-packages-from-source/
+apt-get update -q
+apt-get install -qy dpkg-dev devscripts
+sed -Ei.bak 's/^# deb-src /deb-src /' /etc/apt/sources.list
+apt-get source hello
+apt-get build-dep -y hello
+cd hello-2.10/
+dpkg-buildpackage -rfakeroot -b -uc -us
+apt install -f ../hello_2.10-2ubuntu4_amd64.deb
+# Here is help for compiled app:
+./hello -h
+Usage: ./hello [OPTION]...
+Print a friendly, customizable greeting.
+
+  -h, --help          display this help and exit
+  -v, --version       display version information and exit
+
+  -t, --traditional       use traditional greeting
+  -g, --greeting=TEXT     use TEXT as the greeting message
+
