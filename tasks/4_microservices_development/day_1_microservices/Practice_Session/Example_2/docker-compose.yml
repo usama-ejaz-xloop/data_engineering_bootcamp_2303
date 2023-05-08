@@ -1,0 +1,9 @@
+services:
+  fast_app:
+    build: ./FastAPI
+    ports:
+      - "5000:8000"
+  flask_app:
+    build: ./Flask_app
+    ports:
+      - "8000:5000"

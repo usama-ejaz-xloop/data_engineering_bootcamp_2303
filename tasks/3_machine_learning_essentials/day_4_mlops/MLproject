@@ -1,0 +1,22 @@
+name: basic_mlflow
+
+# this file is used to configure Python package dependencies.
+# it uses Anaconda, but it can be also alternatively configured to use pip.
+conda_env: conda.yaml
+
+# entry points can be ran using `mlflow run <project_name> -e <entry_point_name>
+entry_points:
+  download_data:
+    # you can run any command using MLFlow
+    command: "bash download_data.sh"
+  # MLproject file has to have main entry_point. It can be toggled without using -e option.
+  main:
+    # parameters is a key-value collection.
+    parameters:
+      file_name:
+        type: str
+        default: "day.csv"
+      max_k:
+        type: int
+        default: 10
+    command: "python train.py {file_name} {max_k}"

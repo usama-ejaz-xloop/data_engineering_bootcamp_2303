@@ -1,0 +1,107 @@
+name: advanced_mlflow
+
+conda_env: conda.yaml
+
+# please fill the missing values marked as [ANSWER].
+
+entry_points:
+  # requires kaggle token, please set it up
+  # https://adityashrm21.github.io/Setting-Up-Kaggle/
+  download_data:
+    parameters:
+      data_path:
+        type: path
+        default: "data"
+    command: "bash download_data.sh data/"
+  prepare_data:
+    parameters:
+      raw_data_path:
+        [ANSWER]: path
+        default: "data/accepted_2007_to_2018Q4.csv.gz"
+      target_col:
+        type: str
+        default: "loan_status"
+      dropped_values:
+        type: list
+        default: [current]
+      [ANSWER]:
+        type: str
+        default: "fully paid"
+      max_nan_proportion:
+        type: float
+        default: 0.1
+      max_categorical_cardinality:
+        type: int
+        default: 1000
+      dst_filename:
+        type: str
+        default: "data/input_data.parquet"
+      selected_cols:
+        type: list
+        default: [loan_amnt, int_rate, last_fico_range_high, last_fico_range_low, tot_coll_amt, dti, annual_inc, delinq_2yrs, tot_cur_bal, avg_cur_bal]
+    command: [ANSWER]
+
+  prepare_train_test_split_older:
+    parameters:
+      input_data_path:
+        type: path
+        default: "data/input_data.parquet"
+      last_train_issue_date:
+        type: str
+        default: May-2014
+      last_test_issue_date:
+        type: str
+        default: Nov-2014
+      train_dst_path:
+        type: str
+        default: "data/train1_0.parquet"
+      test_dst_path:
+        type: str
+        default: "data/test1_0.parquet"
+    command: [ANSWER]
+
+
+  prepare_train_test_split_newer:
+    parameters:
+      input_data_path:
+        type: path
+        default: "data/input_data.parquet"
+      last_train_issue_date:
+        type: str
+        default: May-2015
+      last_test_issue_date:
+        type: str
+        default: Nov-2015
+      train_dst_path:
+        type: str
+        default: "data/train1_1.parquet"
+      test_dst_path:
+        type: str
+        default: "data/test1_1.parquet"
+    command: [ANSWER]
+
+  evaluate_model:
+    parameters:
+      model_version:
+        type: str
+        default: "'1_0'"
+      data_version:
+        type: str
+        default: "'1_0'"
+      model_path:
+        type: str
+        default: "models:/ChurnModel_{}/latest"
+      data_path:
+        type: str
+        default: "data/test{}.parquet"
+    command: "python evaluate_model.py {model_path} {model_version} {data_path} {data_version}"
+
+  main:
+    parameters:
+      model_config_path:
+        type: path
+        default: "model_conf.yaml"
+      data_version:
+        type: str
+        default: "'1_0'"
+    command: [ANSWER]
