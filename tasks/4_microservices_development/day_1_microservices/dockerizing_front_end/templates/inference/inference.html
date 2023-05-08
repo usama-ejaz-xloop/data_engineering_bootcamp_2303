@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block hero_body %}
+    <div class="container has-text-centered">
+        <div class="columns is-vcentered">
+            <div class="column is-half">
+                <h1 class="title is-2">
+                    Upload file to run inference
+                </h1>
+                <br>
+                <div class="columns is-centered">
+                    <div class="container column is-half">
+                        <form action="/" method="POST" enctype="multipart/form-data">
+                            <div class="file is-centered is-success has-name">
+                                <label class="file-label">
+                                    <input class="file-input" type="file" name="image">
+                                    <span class="file-cta">
+                                        <span class="file-icon">
+                                            <i class="fas fa-upload"></i>
+                                        </span>
+                                        <span class="file-label">
+                                            Choose file ...
+                                        </span>
+                                    </span>
+                                    <span class="file-name">
+                                        {% if image_name %}
+                                            {{ image_name }}
+                                        {% else %}
+                                            ...
+                                        {% endif %}
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="control m-4">
+                                <button class="button is-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% if image_data %}
+                <div class="column is-5">
+                    <figure class="image is-4by3">
+                        <img src="data:image/jpeg;base64,{{ image_data }}" alt="image_data" id="imgslot" />
+                    </figure>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
