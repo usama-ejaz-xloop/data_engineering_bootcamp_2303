@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block hero_body %}
+    <div class="container has-text-centered">
+        <h1 class="title is-2">
+            Add TODO item
+        </h1>
+        <br>
+        <div class="columns is-centered">
+            <div class="container column is-half">
+                <form action="/" method="POST">
+                    <textarea name="content" class="textarea" placeholder="Please provide the TODO item content"></textarea>
+                    <div class="control m-4">
+                        <button class="button is-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <h2 class="title is-2">TODO items</h2>
+        {% for todo_item in todo_items %}
+            <p>
+                {{ todo_item }}
+            </p>
+        {% endfor %}
+    </div>
+{% endblock %}
