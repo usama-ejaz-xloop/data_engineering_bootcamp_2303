@@ -1,0 +1,17 @@
+version: "3"
+services:
+  secret:
+    image: nginx
+    volumes:
+      - ./secrets/1:/usr/share/nginx/html:ro
+  secret_ff10ca4db4aa00ff94fee47effe1ec9db9d6ab9d:
+    image: nginx
+    volumes:
+      - ./secrets/2:/usr/share/nginx/html:ro
+  language_detect:
+    build: language_detect
+    ports:
+      - 5000:5000
+    command: uvicorn api:app --host 0.0.0.0 --port 5000 --reload
+    restart: always
+
