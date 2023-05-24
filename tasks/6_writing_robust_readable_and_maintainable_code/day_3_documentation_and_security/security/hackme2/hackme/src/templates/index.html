@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="title is-1">Add TODO item</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <textarea class="textarea" name="content"></textarea>
+                <input class="button" type="submit" value="save" />
+            </form>
+            <h1 class="title is-1">TODO items</h1>
+            <a href="?filter=all" class="button {% if filter == 'all' %}is-primary{% endif %}">Show all</a>
+            <a href="?filter=long" class="button {% if filter == 'long' %}is-primary{% endif %}">Show longer than 100 characters</a>
+
+            {% for todo_item in todo_items %}
+                <p>
+                    {{ todo_item.content }}
+                </p>
+            {% endfor %}
+        </div>
+    </body>
+</html>

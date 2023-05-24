@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  hackme:
+    build: hackme
+    environment:
+        IMPORTANT_CONFIGURATION_VALUE: FLAG{do_not_enable_debug_on_production_as_it_leaks_valuable_information_for_hackers}
+    ports:
+        - 8000:8000
